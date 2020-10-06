@@ -30,10 +30,14 @@ class Events {
   comment: string;
 
   @Column()
-  likes: Number;
+  likes: number;
 
   @Column()
-  dislikes: Number;
+  dislikes: number;
+
+
+  @Column()
+  eventImage: string;
 
   @CreateDateColumn()
   created_at: Date;

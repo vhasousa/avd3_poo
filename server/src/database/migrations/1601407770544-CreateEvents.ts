@@ -26,7 +26,6 @@ export class CreateEvents1601407770544 implements MigrationInterface {
           {
             name: 'place',
             type: 'varchar',
-            isUnique: true,
           },
           {
             name: 'comment',

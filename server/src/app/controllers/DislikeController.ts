@@ -6,21 +6,17 @@ interface Request {
   event_id: string;
 }
 
-class LikeController {
+class DislikeController {
   public async store({ event_id }: Request): Promise<Events | null> {
     const eventsRepository = getRepository(Events);
 
     const event = await eventsRepository.findOne(event_id);
 
-    console.log(event);
-
     if (!event) {
       return null;
     }
 
-    event.likes += 1;
-
-    console.log(event);
+    event.dislikes += 1;
 
     await eventsRepository.save(event);
 
@@ -28,4 +24,4 @@ class LikeController {
   }
 }
 
-export default LikeController;
+export default DislikeController;

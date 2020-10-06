@@ -2,7 +2,10 @@ import { Router } from 'express';
 
 import LikeController  from '../app/controllers/LikeController';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const likesRouter = Router();
+likesRouter.use(ensureAuthenticated);
 
 likesRouter.get('/:event_id', async (request, response) => {
   try {
@@ -11,8 +14,10 @@ likesRouter.get('/:event_id', async (request, response) => {
     const likeController = new LikeController();
 
     const likes = await likeController.store({
-      event_id
+      event_id,
     })
+
+    return response.json(likes);
   } catch (err) {
     return response.status(400).json({ error: err.message })
   }
